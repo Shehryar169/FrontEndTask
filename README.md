@@ -2,9 +2,9 @@
 
    1.	 Goto to specific directory and run Git bash or any other console utility there. OR <br />
     	 Run cmd and move to the specific directory. <br />
-   2.	 Type git clone https://github.com/Shehryar169/FrontEndTask.git   // Enter <br />
-   3.	 npm install  // you should have node, npm installed globally <br />
-   4.	 npm start :) // Boooom <br />
+   2.	 Type "git clone https://github.com/Shehryar169/FrontEndTask.git"   // Hit Enter <br />
+   3.	 Then "npm install"  // you should have node, npm installed globally <br />
+   4.	 And "npm start" :)    <br />
 
 
 ## Extra Information 
