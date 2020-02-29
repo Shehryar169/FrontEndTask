@@ -1,10 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { applyMiddleware, compose, createStore } from "redux";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+import AnimalsComponent from "./components/animalsComponent";
+import animalsReducer from "./reducers/animal-reducer";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const middleware = [thunk];
+
+const store = createStore(
+  animalsReducer,
+  { animals: "Static Animal" },
+  applyMiddleware(...middleware)
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App></App>
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

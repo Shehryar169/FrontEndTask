@@ -1,3 +1,14 @@
+﻿To Install this App.
+
+1. a. Goto to specific directory and run Git bash or any other console utility there. OR
+   b. Run cmd and move to the specific directory.
+2. Type git clone https://github.com/Shehryar169/FrontEndTask.git   // Enter
+3. npm install  // you should have node, npm installed globally
+4. npm start :) // Boooom 
+
+
+######################### Extra Information #######################################################
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
