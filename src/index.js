@@ -3,23 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-import AnimalsComponent from "./components/animalsComponent";
 import animalsReducer from "./reducers/animal-reducer";
 
 const middleware = [thunk];
 
-const store = createStore(
-  animalsReducer,
-  { animals: "Static Animal" },
-  applyMiddleware(...middleware)
-);
+const store = createStore(animalsReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App></App>
+    <App />
   </Provider>,
   document.getElementById("root")
 );

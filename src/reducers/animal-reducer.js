@@ -6,37 +6,35 @@ import {
 
 const initialState = {
   pending: false,
-  data: ["data", "data"],
-  error: null
+  data: [],
+  error: ""
 };
 
 export default function animalsReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_ANIMALS_PENDING:
-      console.log("Pending");
       return {
         ...state,
         pending: true,
-        data: ["Loading"],
-        error: "Error and Loadong"
+        error: "Pending"
       };
     case FETCH_ANIMALS_SUCCESS:
-      console.log("Success");
+      console.log("sharryar.....", action.payload);
       return {
         ...state,
         pending: false,
         data: action.payload,
-        error: "true"
+        error: action.payload.error
       };
     case FETCH_ANIMALS_ERROR:
       console.log("Error");
       return {
         ...state,
         pending: false,
-        data: ["Error"],
         error: action.error
       };
     default:
+      console.log(state);
       return state;
   }
 }
