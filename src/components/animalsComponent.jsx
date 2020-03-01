@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./style.css";
 import {
   loadAnimals,
   SuccessAnimals,
@@ -12,7 +13,7 @@ import Loader from "react-loader-spinner";
 class AnimalsComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { filteredItems: [] };
+    this.state = { filteredItems: null };
   }
 
   filterList = event => {
@@ -25,7 +26,6 @@ class AnimalsComponent extends Component {
 
   componentDidMount() {
     this.props.fetchAnimals();
-    this.setState({ filteredItems: this.props.data });
   }
   render() {
     if (this.props.loading) {
@@ -37,6 +37,29 @@ class AnimalsComponent extends Component {
     }
     if (this.props.error) {
       return <div style={{ color: "red" }}>ERROR: {this.props.error}</div>;
+    }
+    if (this.state.filteredItems) {
+      return (
+        <div>
+          <form>
+            <fieldset className="form-group">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Search"
+                onChange={this.filterList}
+              />
+            </fieldset>
+          </form>
+          <ul className="list-group">
+            {this.state.filteredItems.map((u, index) => (
+              <li className="list-group-item" key={index}>
+                {u}
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
     }
     return (
       <div>
@@ -51,13 +74,11 @@ class AnimalsComponent extends Component {
           </fieldset>
         </form>
         <ul className="list-group">
-          <li className="list-group-item">
-            {this.state.filteredItems.map((u, index) => (
-              <tr key={index}>
-                <td>{u}</td>
-              </tr>
-            ))}
-          </li>
+          {this.props.data.map((u, index) => (
+            <li className="list-group-item" key={index}>
+              {u}
+            </li>
+          ))}
         </ul>
       </div>
     );
