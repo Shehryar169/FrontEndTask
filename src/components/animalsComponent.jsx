@@ -19,7 +19,9 @@ class AnimalsComponent extends Component {
   filterList = event => {
     let items = this.props.data;
     items = items.filter(item => {
-      return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+      return (
+        item.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+      );
     });
     this.setState({ filteredItems: items });
   };
